@@ -1,0 +1,17 @@
+{
+	"m_HideFlags": 0,
+	"m_Scenes": [
+		{
+			"m_Enabled": true,
+			"m_Path": "Assets/Game/Scenes/Connection.unity"
+		},
+		{
+			"m_Enabled": true,
+			"m_Path": "Assets/Game/Scenes/Game.unity"
+		},
+		{
+			"m_Enabled": true,
+			"m_Path": "Assets/Game/Scenes/Disconnection.unity"
+		}
+	]
+}

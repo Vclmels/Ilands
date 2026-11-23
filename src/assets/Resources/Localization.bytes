@@ -1,0 +1,38 @@
+KEY,English,Russian,Portuguese,Spanish,Japanese
+PlaySolo,Play Solo,Играть в одиночку,Jogar Solo,Jugar solo,一人プレイ
+PlayFacebook,Play on Facebook,Играть на Facebook,Jogar no Facebook,Jugar en Facebook,Facebookでプレイ
+PremiumUpgrade,Premium Upgrade,Повышение до Premium,Atualizar para Premium,Actualizar a Premium,プレミアムアップグレード
+NewIland,New iLand,Новый iLand,Nova iLand,Nueva iLand,新しいiLand
+Name,Name,Имя,Nome,Nombre,名前
+PressToType,Press here to type,Выбрать тип здесь,Pressione aqui para digitar,Pulsa aquí para escribir,ここをプレスしてタイプ
+Type,Type,Тип,Tipo,Tipo,タイプ
+Normal,Normal,Обычный,Normal,Normal,標準
+Flat,Flat,Плоский,Plana,Plana,フラット
+Create,Create,Создать,Criar,Crear,作成
+Cancel,Cancel,Отмена,Cancelar,Cancelar,取消
+ConfirmDelete,Are you sure you want to delete this?,"Уверены, что хотите удалить?",Tem certeza que deseja apagar isto?,¿Seguro que deseas eliminar esto?,本当にこれを削除しますか？
+Delete,Delete,Удалить,Apagar,Eliminar,削除
+AddFriend,Add Friend,Добавить друга,Adicionar Amigo,Añadir amigo,友達を追加
+Back,Back,Назад,Voltar,Volver,戻る
+Play,Play,Играть,Jogar,Jugar,プレイ
+CreateNewILand,Create New iLand,Создать новый iLand,Criar Nova iLand ,Crear nueva iLand,新しいiLandを作成
+InviteFriends,Invite Friends,Пригласить друзей,Convidar Amigos,Invitar amigos,友達を招待
+Search,Search,Поиск,Buscar,Buscar,検索
+FriendName,Friend's Name,Имя друга,Nome do Amigo,Nombre de amigo,友達の名前
+Invite,Invite,Пригласить,Convidar,Invitar,招待する
+Restore,Restore,Восстановить,Restaurar,Restaurar,復元
+BuyNow,Buy Now,Купить,Comprar,Comprar,今すぐ購入
+ConfirmQuit,Are you sure you want to quit?,"Уверены, что хотите выйти?",Tem certeza que deseja sair?,¿Seguro que deseas salir?,本当に終了しますか？
+Exit,Exit,Выход,Sair,Salir,終了
+ConfirmReset,Are you sure you want to reset your iLand?,"Уверены, что хотите сбросить свой iLand?",Tem certeza que deseja recomeçar sua iLand do zero?,¿Seguro que deseas restablecer tu iLand?,本当にiLandを再設定しますか？
+Reset,Reset,Сброс,Zerar,Restablecer,再設定
+Settings,Settings,Настройки,Configurações,Ajustes,設定
+Save,Save,Сохранить,Salvar,Guardar,保存
+AllowFriends,Allow friends to make changes to my iLand,Разрешить друзьям делать изменения в моем iLand,Permitir que amigos alterem minha iLand,Permitir que mis amigos hagan cambios en mi iLand,私のiLandを友達が変更するのを許可する
+Send,Send,Отправить,Enviar,Enviar,送信
+ResumeGame,Resume Game,Продолжить игру,Continuar Jogo,Reanudar juego,ゲームを再開する
+ExitMainMenu,Exit to Main Menu,Выход в Главное меню,Sair para o Menu Principal,Ir al menú principal,メインメニューに戻る
+BlocksUnlocked,All blocks unlocked,Все блоки разблокированы,Todos os blocos destravados,Todos los bloques desbloqueados,全ブロック解除
+FlyMode,Fly mode,Режим полета,Modo voar,Modo de vuelo,飛行モード
+CreateNewILands,Create new iLands,Создать новые iLands,Crie novas iLands,Crea iLands nuevas,新しいiLandsを作成
+AdsRemoved,Ads removed,Реклама удалена,Sem anúncios,Anuncios eliminados,広告削除

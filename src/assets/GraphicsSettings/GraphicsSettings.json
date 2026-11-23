@@ -1,0 +1,8 @@
+{
+	"m_AlwaysIncludedShaders": [
+		{ "m_Collection": "maindata", "m_PathID": 7 },
+		{ "m_Collection": "maindata", "m_PathID": 10770 },
+		{ "m_Collection": "maindata", "m_PathID": 10782 }
+	],
+	"m_HideFlags": 0
+}

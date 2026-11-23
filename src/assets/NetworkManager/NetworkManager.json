@@ -1,0 +1,115 @@
+{
+	"m_AssetToPrefab": [
+		{
+			"Key": {
+				"m_Data_0_": 388854266,
+				"m_Data_1_": 1202657973,
+				"m_Data_2_": 196668045,
+				"m_Data_3_": 4293039575
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 123 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 394403786,
+				"m_Data_1_": 1234959980,
+				"m_Data_2_": 1512288176,
+				"m_Data_3_": 3762834481
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 373 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 533424686,
+				"m_Data_1_": 1248642072,
+				"m_Data_2_": 616870555,
+				"m_Data_3_": 2599867487
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 128 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 701038485,
+				"m_Data_1_": 1314812074,
+				"m_Data_2_": 1369943208,
+				"m_Data_3_": 3152668901
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 130 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 806165395,
+				"m_Data_1_": 1117286598,
+				"m_Data_2_": 1823477169,
+				"m_Data_3_": 3682202395
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 369 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 819677871,
+				"m_Data_1_": 1253908137,
+				"m_Data_2_": 2160362662,
+				"m_Data_3_": 2535528319
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 132 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 1269657983,
+				"m_Data_1_": 1231816883,
+				"m_Data_2_": 1982204295,
+				"m_Data_3_": 4273380412
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 126 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 1820304872,
+				"m_Data_1_": 1096888969,
+				"m_Data_2_": 4232844219,
+				"m_Data_3_": 329073804
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 364 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 2725704479,
+				"m_Data_1_": 1157180843,
+				"m_Data_2_": 356397984,
+				"m_Data_3_": 2129516420
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 127 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 3266836344,
+				"m_Data_1_": 1273868581,
+				"m_Data_2_": 3532459411,
+				"m_Data_3_": 1251614188
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 377 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 3633872890,
+				"m_Data_1_": 1102268833,
+				"m_Data_2_": 770053029,
+				"m_Data_3_": 1316594000
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 124 }
+		},
+		{
+			"Key": {
+				"m_Data_0_": 4262877103,
+				"m_Data_1_": 1212203935,
+				"m_Data_2_": 3167503520,
+				"m_Data_3_": 1207157332
+			},
+			"Value": { "m_Collection": "maindata", "m_PathID": 125 }
+		}
+	],
+	"m_DebugLevel": 0,
+	"m_HideFlags": 0,
+	"m_Sendrate": 15
+}

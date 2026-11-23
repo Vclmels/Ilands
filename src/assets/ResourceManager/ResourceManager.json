@@ -1,0 +1,64 @@
+{
+	"m_Container": {
+		"chartboostsettings": { "m_Collection": "maindata", "m_PathID": 1 },
+		"facebooksettings": { "m_Collection": "maindata", "m_PathID": 1 },
+		"localization": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - premultiplied colored": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - premultiplied colored 1": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - premultiplied colored 2": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - premultiplied colored 3": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - text": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - text 1": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - text 2": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - text 3": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - transparent colored": { "m_Collection": "maindata", "m_PathID": 17 },
+		"shaders/unlit - transparent colored 1": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - transparent colored 2": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - transparent colored 3": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - transparent packed": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - transparent packed 1": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - transparent packed 2": { "m_Collection": "maindata", "m_PathID": 1 },
+		"shaders/unlit - transparent packed 3": { "m_Collection": "maindata", "m_PathID": 1 },
+		"soom_logo": { "m_Collection": "maindata", "m_PathID": 1 },
+		"soomlaeditorscript": { "m_Collection": "maindata", "m_PathID": 1 }
+	},
+	"m_DependentAssets": [
+		{
+			"m_Dependencies": [
+				{ "m_Collection": "maindata", "m_PathID": 1 }
+			],
+			"m_Object": { "m_Collection": "maindata", "m_PathID": 1 }
+		},
+		{
+			"m_Dependencies": [
+				{ "m_Collection": "maindata", "m_PathID": 1 }
+			],
+			"m_Object": { "m_Collection": "maindata", "m_PathID": 1 }
+		},
+		{
+			"m_Dependencies": [
+				{ "m_Collection": "maindata", "m_PathID": 214 }
+			],
+			"m_Object": { "m_Collection": "maindata", "m_PathID": 1 }
+		},
+		{
+			"m_Dependencies": [
+				{ "m_Collection": "maindata", "m_PathID": 341 }
+			],
+			"m_Object": { "m_Collection": "maindata", "m_PathID": 1 }
+		},
+		{
+			"m_Dependencies": [
+				{ "m_Collection": "maindata", "m_PathID": 130 }
+			],
+			"m_Object": { "m_Collection": "maindata", "m_PathID": 1 }
+		},
+		{
+			"m_Dependencies": [
+				{ "m_Collection": "maindata", "m_PathID": 1 }
+			],
+			"m_Object": { "m_Collection": "maindata", "m_PathID": 1 }
+		}
+	],
+	"m_HideFlags": 0
+}

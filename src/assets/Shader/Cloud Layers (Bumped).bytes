@@ -1,0 +1,284 @@
+Shader "Time of Day/Cloud Layers (Bumped)" {
+Properties {
+ _NoiseTexture1 ("Noise Texture 1 (A)", 2D) = "white" {}
+ _NoiseTexture2 ("Noise Texture 2 (A)", 2D) = "white" {}
+ _NoiseNormals1 ("Noise Normals 1", 2D) = "bump" {}
+ _NoiseNormals2 ("Noise Normals 2", 2D) = "bump" {}
+}
+SubShader { 
+ Tags { "QUEUE"="Transparent-450" "IGNOREPROJECTOR"="true" "RenderType"="Transparent" }
+ Pass {
+  Tags { "QUEUE"="Transparent-450" "IGNOREPROJECTOR"="true" "RenderType"="Transparent" }
+  ZWrite Off
+  Cull Front
+  Fog { Mode Off }
+  Blend SrcAlpha OneMinusSrcAlpha
+Program "vp" {
+SubProgram "gles " {
+"!!GLES
+
+
+#ifdef VERTEX
+
+attribute vec4 _glesVertex;
+attribute vec3 _glesNormal;
+attribute vec4 _glesTANGENT;
+uniform highp mat4 glstate_matrix_mvp;
+uniform highp float TOD_OneOverGamma;
+uniform highp vec3 TOD_CloudColor;
+uniform highp vec3 TOD_LocalSunDirection;
+uniform highp vec3 TOD_LocalMoonDirection;
+uniform highp vec3 TOD_LocalLightDirection;
+uniform highp float _SunGlow;
+uniform highp float _MoonGlow;
+uniform highp float _CloudDensity;
+uniform highp vec2 _CloudScale1;
+uniform highp vec2 _CloudScale2;
+uniform highp vec4 _CloudUV;
+varying lowp vec3 xlv_COLOR;
+varying highp vec4 xlv_TEXCOORD0;
+varying highp vec3 xlv_TEXCOORD1;
+varying highp vec3 xlv_TEXCOORD2;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  tmpvar_1.xyz = normalize(_glesTANGENT.xyz);
+  tmpvar_1.w = _glesTANGENT.w;
+  highp vec3 tmpvar_2;
+  tmpvar_2 = normalize(_glesNormal);
+  lowp vec3 tmpvar_3;
+  highp vec4 tmpvar_4;
+  highp vec3 tmpvar_5;
+  highp vec3 tmpvar_6;
+  tmpvar_6 = normalize(_glesVertex.xyz);
+  highp vec2 tmpvar_7;
+  tmpvar_7 = (tmpvar_6.xz / pow ((tmpvar_6.y + 0.1), 0.75));
+  highp vec3 tmpvar_8;
+  tmpvar_8 = pow (TOD_CloudColor, vec3(TOD_OneOverGamma));
+  tmpvar_3 = tmpvar_8;
+  tmpvar_4.xy = ((tmpvar_7 + _CloudUV.xy) / _CloudScale1);
+  tmpvar_4.zw = ((tmpvar_7 + _CloudUV.zw) / _CloudScale2);
+  tmpvar_5.x = (_CloudDensity * clamp ((
+    (100.0 * tmpvar_6.y)
+   * tmpvar_6.y), 0.0, 1.0));
+  tmpvar_5.y = ((pow (
+    ((_MoonGlow * max (0.0, dot (tmpvar_2, 
+      -(TOD_LocalMoonDirection)
+    ))) + (_SunGlow * max (0.0, dot (tmpvar_2, 
+      -(TOD_LocalSunDirection)
+    ))))
+  , 10.0) * TOD_OneOverGamma) * 0.5);
+  tmpvar_5.z = (TOD_OneOverGamma * 0.5);
+  highp vec3 tmpvar_9;
+  highp vec3 tmpvar_10;
+  tmpvar_9 = tmpvar_1.xyz;
+  tmpvar_10 = (((tmpvar_2.yzx * tmpvar_1.zxy) - (tmpvar_2.zxy * tmpvar_1.yzx)) * _glesTANGENT.w);
+  highp mat3 tmpvar_11;
+  tmpvar_11[0].x = tmpvar_9.x;
+  tmpvar_11[0].y = tmpvar_10.x;
+  tmpvar_11[0].z = tmpvar_2.x;
+  tmpvar_11[1].x = tmpvar_9.y;
+  tmpvar_11[1].y = tmpvar_10.y;
+  tmpvar_11[1].z = tmpvar_2.y;
+  tmpvar_11[2].x = tmpvar_9.z;
+  tmpvar_11[2].y = tmpvar_10.z;
+  tmpvar_11[2].z = tmpvar_2.z;
+  gl_Position = (glstate_matrix_mvp * _glesVertex);
+  xlv_COLOR = tmpvar_3;
+  xlv_TEXCOORD0 = tmpvar_4;
+  xlv_TEXCOORD1 = (tmpvar_11 * -(TOD_LocalLightDirection));
+  xlv_TEXCOORD2 = tmpvar_5;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+uniform highp float _CloudSharpness;
+uniform sampler2D _NoiseTexture1;
+uniform sampler2D _NoiseTexture2;
+uniform sampler2D _NoiseNormals1;
+uniform sampler2D _NoiseNormals2;
+varying lowp vec3 xlv_COLOR;
+varying highp vec4 xlv_TEXCOORD0;
+varying highp vec3 xlv_TEXCOORD1;
+varying highp vec3 xlv_TEXCOORD2;
+void main ()
+{
+  lowp float cloud_shading_1;
+  lowp float a_2;
+  lowp vec4 color_3;
+  lowp float x_4;
+  x_4 = (texture2D (_NoiseTexture1, xlv_TEXCOORD0.xy).w * texture2D (_NoiseTexture2, xlv_TEXCOORD0.zw).w);
+  highp float tmpvar_5;
+  tmpvar_5 = (pow (x_4, _CloudSharpness) * xlv_TEXCOORD2.x);
+  a_2 = tmpvar_5;
+  color_3.w = clamp (a_2, 0.0, 1.0);
+  lowp vec3 tmpvar_6;
+  tmpvar_6 = (((0.5 * 
+    (texture2D (_NoiseNormals1, xlv_TEXCOORD0.xy) + texture2D (_NoiseNormals2, xlv_TEXCOORD0.zw))
+  ).xyz * 2.0) - 1.0);
+  highp float tmpvar_7;
+  tmpvar_7 = ((1.0 + dot (tmpvar_6, xlv_TEXCOORD1)) / 2.0);
+  cloud_shading_1 = tmpvar_7;
+  lowp float tmpvar_8;
+  tmpvar_8 = clamp ((1.5 - a_2), 0.0, 1.0);
+  highp vec3 tmpvar_9;
+  tmpvar_9 = (xlv_COLOR + (xlv_TEXCOORD2.y * tmpvar_8));
+  color_3.xyz = tmpvar_9;
+  highp vec3 tmpvar_10;
+  tmpvar_10 = (color_3.xyz * (0.1 + pow (cloud_shading_1, xlv_TEXCOORD2.z)));
+  color_3.xyz = tmpvar_10;
+  color_3.xyz = (color_3.xyz * (0.1 + (1.0/(
+    exp((0.2 * a_2))
+  ))));
+  gl_FragData[0] = color_3;
+}
+
+
+
+#endif"
+}
+SubProgram "gles3 " {
+"!!GLES3#version 300 es
+
+
+#ifdef VERTEX
+
+
+in vec4 _glesVertex;
+in vec3 _glesNormal;
+in vec4 _glesTANGENT;
+uniform highp mat4 glstate_matrix_mvp;
+uniform highp float TOD_OneOverGamma;
+uniform highp vec3 TOD_CloudColor;
+uniform highp vec3 TOD_LocalSunDirection;
+uniform highp vec3 TOD_LocalMoonDirection;
+uniform highp vec3 TOD_LocalLightDirection;
+uniform highp float _SunGlow;
+uniform highp float _MoonGlow;
+uniform highp float _CloudDensity;
+uniform highp vec2 _CloudScale1;
+uniform highp vec2 _CloudScale2;
+uniform highp vec4 _CloudUV;
+out lowp vec3 xlv_COLOR;
+out highp vec4 xlv_TEXCOORD0;
+out highp vec3 xlv_TEXCOORD1;
+out highp vec3 xlv_TEXCOORD2;
+void main ()
+{
+  highp vec4 tmpvar_1;
+  tmpvar_1.xyz = normalize(_glesTANGENT.xyz);
+  tmpvar_1.w = _glesTANGENT.w;
+  highp vec3 tmpvar_2;
+  tmpvar_2 = normalize(_glesNormal);
+  lowp vec3 tmpvar_3;
+  highp vec4 tmpvar_4;
+  highp vec3 tmpvar_5;
+  highp vec3 tmpvar_6;
+  tmpvar_6 = normalize(_glesVertex.xyz);
+  highp vec2 tmpvar_7;
+  tmpvar_7 = (tmpvar_6.xz / pow ((tmpvar_6.y + 0.1), 0.75));
+  highp vec3 tmpvar_8;
+  tmpvar_8 = pow (TOD_CloudColor, vec3(TOD_OneOverGamma));
+  tmpvar_3 = tmpvar_8;
+  tmpvar_4.xy = ((tmpvar_7 + _CloudUV.xy) / _CloudScale1);
+  tmpvar_4.zw = ((tmpvar_7 + _CloudUV.zw) / _CloudScale2);
+  tmpvar_5.x = (_CloudDensity * clamp ((
+    (100.0 * tmpvar_6.y)
+   * tmpvar_6.y), 0.0, 1.0));
+  tmpvar_5.y = ((pow (
+    ((_MoonGlow * max (0.0, dot (tmpvar_2, 
+      -(TOD_LocalMoonDirection)
+    ))) + (_SunGlow * max (0.0, dot (tmpvar_2, 
+      -(TOD_LocalSunDirection)
+    ))))
+  , 10.0) * TOD_OneOverGamma) * 0.5);
+  tmpvar_5.z = (TOD_OneOverGamma * 0.5);
+  highp vec3 tmpvar_9;
+  highp vec3 tmpvar_10;
+  tmpvar_9 = tmpvar_1.xyz;
+  tmpvar_10 = (((tmpvar_2.yzx * tmpvar_1.zxy) - (tmpvar_2.zxy * tmpvar_1.yzx)) * _glesTANGENT.w);
+  highp mat3 tmpvar_11;
+  tmpvar_11[0].x = tmpvar_9.x;
+  tmpvar_11[0].y = tmpvar_10.x;
+  tmpvar_11[0].z = tmpvar_2.x;
+  tmpvar_11[1].x = tmpvar_9.y;
+  tmpvar_11[1].y = tmpvar_10.y;
+  tmpvar_11[1].z = tmpvar_2.y;
+  tmpvar_11[2].x = tmpvar_9.z;
+  tmpvar_11[2].y = tmpvar_10.z;
+  tmpvar_11[2].z = tmpvar_2.z;
+  gl_Position = (glstate_matrix_mvp * _glesVertex);
+  xlv_COLOR = tmpvar_3;
+  xlv_TEXCOORD0 = tmpvar_4;
+  xlv_TEXCOORD1 = (tmpvar_11 * -(TOD_LocalLightDirection));
+  xlv_TEXCOORD2 = tmpvar_5;
+}
+
+
+
+#endif
+#ifdef FRAGMENT
+
+
+layout(location=0) out mediump vec4 _glesFragData[4];
+uniform highp float _CloudSharpness;
+uniform sampler2D _NoiseTexture1;
+uniform sampler2D _NoiseTexture2;
+uniform sampler2D _NoiseNormals1;
+uniform sampler2D _NoiseNormals2;
+in lowp vec3 xlv_COLOR;
+in highp vec4 xlv_TEXCOORD0;
+in highp vec3 xlv_TEXCOORD1;
+in highp vec3 xlv_TEXCOORD2;
+void main ()
+{
+  lowp float cloud_shading_1;
+  lowp float a_2;
+  lowp vec4 color_3;
+  lowp float x_4;
+  x_4 = (texture (_NoiseTexture1, xlv_TEXCOORD0.xy).w * texture (_NoiseTexture2, xlv_TEXCOORD0.zw).w);
+  highp float tmpvar_5;
+  tmpvar_5 = (pow (x_4, _CloudSharpness) * xlv_TEXCOORD2.x);
+  a_2 = tmpvar_5;
+  color_3.w = clamp (a_2, 0.0, 1.0);
+  lowp vec3 tmpvar_6;
+  tmpvar_6 = (((0.5 * 
+    (texture (_NoiseNormals1, xlv_TEXCOORD0.xy) + texture (_NoiseNormals2, xlv_TEXCOORD0.zw))
+  ).xyz * 2.0) - 1.0);
+  highp float tmpvar_7;
+  tmpvar_7 = ((1.0 + dot (tmpvar_6, xlv_TEXCOORD1)) / 2.0);
+  cloud_shading_1 = tmpvar_7;
+  lowp float tmpvar_8;
+  tmpvar_8 = clamp ((1.5 - a_2), 0.0, 1.0);
+  highp vec3 tmpvar_9;
+  tmpvar_9 = (xlv_COLOR + (xlv_TEXCOORD2.y * tmpvar_8));
+  color_3.xyz = tmpvar_9;
+  highp vec3 tmpvar_10;
+  tmpvar_10 = (color_3.xyz * (0.1 + pow (cloud_shading_1, xlv_TEXCOORD2.z)));
+  color_3.xyz = tmpvar_10;
+  color_3.xyz = (color_3.xyz * (0.1 + (1.0/(
+    exp((0.2 * a_2))
+  ))));
+  _glesFragData[0] = color_3;
+}
+
+
+
+#endif"
+}
+}
+Program "fp" {
+SubProgram "gles " {
+"!!GLES"
+}
+SubProgram "gles3 " {
+"!!GLES3"
+}
+}
+ }
+}
+Fallback Off
+}
